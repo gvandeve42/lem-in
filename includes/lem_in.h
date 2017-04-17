@@ -10,11 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM-IN_H
-# define LEM-IN_H
+#ifndef LEM_IN_H
+# define LEM_IN_H
 
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
+
+typedef struct s_hive	t_hive;
+typedef struct s_prec	t_prec;
+typedef struct s_node	t_node;
+
+struct	s_hive
+{
+	t_node	*start;
+	t_node	*end;
+	t_node	*lst;
+};
+
+struct	s_prec
+{
+	char	*name;
+	int		weigth;
+};
+
+struct	s_node
+{
+	char	*name;
+	int		x;
+	int		y;
+	t_prec	*prec;
+	t_node	**prev;
+	t_node	**next;
+	t_node	*link;
+};
+
+t_node		*init_node(char *name, char *x, char *y);
+t_node		*new_elem(char *name, char *x, char *y, t_node *nd);
+void		*free_hive(t_hive *hive);
 
 #endif
