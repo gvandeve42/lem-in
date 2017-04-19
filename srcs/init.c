@@ -18,18 +18,3 @@ t_hive	*init_hive(void)
 	hive = (t_hive*)ft_memalloc(sizeof(t_hive));
 	return (hive);
 }
-
-void	free_node(t_node *lst)
-{
-	if (lst->link != NULL)
-		free_node(lst->link);
-	free(lst->name);
-	free(lst);
-}
-
-void	*free_hive(t_hive *hive)
-{
-	free_node(hive->start);
-	free_node(hive->end);
-	free(hive);
-}

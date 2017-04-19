@@ -13,6 +13,8 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
+# include <string.h>
+# include <errno.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
@@ -47,6 +49,15 @@ struct	s_node
 
 t_node		*init_node(char *name, char *x, char *y);
 t_node		*new_elem(char *name, char *x, char *y, t_node *nd);
-void		*free_hive(t_hive *hive);
+void		free_hive(t_hive *hive);
+void		free_node(t_node *lst);
+void		free_tab(char **tab);
+int			len(char **tab);
+int			is_node(char **tab);
+int			is_via(char **tab);
+int			is_nb(char *nb);
+void		node_proceed(char **tab, t_hive*hv);
+void		via_proceed(char **tab, t_hive *hv);
+void		print_lst(t_node *lst);
 
 #endif
