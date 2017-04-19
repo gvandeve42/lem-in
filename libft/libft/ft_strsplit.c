@@ -16,14 +16,14 @@
 
 static char		*ft_gen(char *s, char c, size_t i)
 {
-	size_t	len;
+	int		len;
 	size_t	j;
 	char	*new;
 	char	*anchor;
 
 	len = 0;
 	j = i;
-	while (s[j] != c)
+	while (s[j] != '\0' && s[j] != c)
 	{
 		len++;
 		j++;
