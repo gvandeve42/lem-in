@@ -1,5 +1,4 @@
 #include "lem_in.h"
-#include <stdio.h>
 
 void	node_proceed(char **tab, t_hive *hv, char *line)
 {

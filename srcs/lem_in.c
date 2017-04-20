@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 static void	scrap_info(char **line, t_hive *hv)
 {
@@ -30,7 +29,7 @@ static void	scrap_info(char **line, t_hive *hv)
 				via_proceed(tab, hv, *line);
 			else
 			{
-				free_all(hv, tab, *line);
+				free_all(hv, tab, NULL);
 				ft_printf("Error : File bad formatted\n");
 				exit(1);
 			}
@@ -50,7 +49,6 @@ static void	scrap_start(char **line, t_hive *hv)
 		get_next_line(0, line);
 		tab = ft_strsplit(*line, ' ');
 		check_start(tab, hv, *line);
-		ft_printf("|||START : %10s, %10d, %10d|||\n", hv->start->name, hv->start->x, hv->start->y);
 		free_tab(tab);
 		free(*line);
 		get_next_line(0, line);
@@ -75,7 +73,6 @@ static void	scrap_end(char **line, t_hive *hv)
 		get_next_line(0, line);
 		tab = ft_strsplit(*line, ' ');
 		check_end(tab, hv, *line);
-		ft_printf("|||END   : %10s, %10d, %10d|||\n", hv->end->name, hv->end->x, hv->end->y);
 		free_tab(tab);
 		free(*line);
 		get_next_line(0, line);
@@ -92,21 +89,26 @@ int		main(void)
 {
 	char	*line;
 	t_hive	*hive;
+	int		flag;
 
+	flag = 0;
 	hive = (t_hive*)ft_memalloc(sizeof(t_hive));
 	while (get_next_line(0, &line))
 		{
-			ft_printf("String : %s\n", line);
-			if (ft_strncmp(line, "##start", 7) == 0)
+			scrap_ant(hive, &line);
+			if (ft_strcmp(line, "##start") == 0)
 				scrap_start(&line, hive);
-			else if (ft_strncmp(line, "##end", 5) == 0)
+			if (ft_strcmp(line, "##end") == 0)
 				scrap_end(&line, hive);
 			if (ft_strncmp(line, "#", 1) != 0)
 				scrap_info(&line, hive);
 			free(line);
 		}
+	print_lst_n(hive->start);
+	print_lst_n(hive->end);
 	print_lst_n(hive->n_lst);
 	print_lst_v(hive->v_lst);
+	//enter_calc(hive);
 	free_hive(hive);
 	return (0);
 }

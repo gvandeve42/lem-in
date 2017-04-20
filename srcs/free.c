@@ -44,9 +44,12 @@ void	free_tab(char **tab)
 
 void	free_all(t_hive *hv, char **tab, char *line)
 {
-	free_hive(hv);
-	free_tab(tab);
-	free(line);
+	if (hv != NULL)
+		free_hive(hv);
+	if (tab != NULL)
+		free_tab(tab);
+	if (line != NULL)
+		free(line);
 }
 
 

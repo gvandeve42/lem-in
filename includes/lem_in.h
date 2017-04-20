@@ -26,6 +26,7 @@ typedef struct s_via	t_via;
 
 struct	s_hive
 {
+	int		ant;
 	t_node	*start;
 	t_node	*end;
 	t_node	*n_lst;
@@ -41,11 +42,11 @@ struct	s_prec
 struct	s_node
 {
 	char	*name;
+	int		ant;
 	int		x;
 	int		y;
 	t_prec	*prec;
-	t_node	**prev;
-	t_node	**next;
+	t_node	**via;
 	t_node	*link;
 };
 
@@ -78,6 +79,7 @@ int			via_viable(char **tab, t_hive *hv, char *line);
 void		check_start(char **tab, t_hive *hv, char *line);
 void		check_end(char **tab, t_hive *hv, char *line);
 void		free_all(t_hive *hv, char **tab, char *line);
+void		scrap_ant(t_hive *hv, char **line);
 
 #endif
 

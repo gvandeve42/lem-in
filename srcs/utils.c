@@ -27,3 +27,24 @@ void	print_lst_v(t_via *lst)
 			print_lst_v(lst->link);
 		}
 }
+
+void	scrap_ant(t_hive *hv, char **line)
+{
+	static char	flag;
+
+	if (flag != 42)
+		{
+			flag = 42;
+			if (is_nb(*line))
+				{
+					hv->ant = ft_atoi(*line);
+					free(*line);
+					get_next_line(0, line);
+				}
+			else
+				{
+					ft_printf("Error : ant number bad formated\n");
+					exit (1);
+				}
+		}
+}
