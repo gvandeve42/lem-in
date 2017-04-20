@@ -11,5 +11,6 @@ void	via_proceed(char **tab, t_hive *hv, char *line)
 {
 	if (is_via(tab, hv, line))
 		if (via_viable(tab, hv, line))
-			hv->v_lst = new_elem_v(tab[0], tab[1], hv->v_lst);
+			if (!node_exist(tab, hv))
+				hv->v_lst = new_elem_v(tab[0], tab[1], hv->v_lst);
 }

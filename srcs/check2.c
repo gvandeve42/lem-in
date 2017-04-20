@@ -42,7 +42,38 @@ void	check_end(char **tab, t_hive *hv, char *line)
 		}
 }
 
+static int	search_node(char *name, t_node *lst)
+{
+	if (lst == NULL)
+		return (0);
+	if (ft_strcmp(name, lst->name) == 0)
+		return (1);
+	search_node(name, lst->link);
+}
 
+int		node_exist(char **name_tab, t_hive *hv)
+{
+	if (hv->start != NULL &&
+		hv->end != NULL &&
+		hv->n_lst != NULL)
+		{
+			if (ft_strcmp(name_tab[0], hv->start->name) != 0 &&
+				ft_strcmp(name_tab[0], hv->end->name) != 0 &&
+				!search_node(name_tab[0], hv->n_lst) ||
+				ft_strcmp(name_tab[1], hv->start->name) != 0 &&
+				ft_strcmp(name_tab[1], hv->end->name) != 0 &&
+				!search_node(name_tab[1], hv->n_lst))
+				{
+					free_all(hv, name_tab, NULL);
+					ft_printf("Error : Via between nodes that don't exist\n");
+					exit (1);
+				}
+			else
+				return (1);
+		}
+	return (0);
+
+}
 
 
 
