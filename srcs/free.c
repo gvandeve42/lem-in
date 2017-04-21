@@ -7,6 +7,7 @@ void	free_node(t_node *lst)
 		if (lst->link != NULL)
 			free_node(lst->link);
 		free(lst->name);
+		free(lst->via);
 		free(lst);
 	}
 }

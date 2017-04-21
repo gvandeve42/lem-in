@@ -84,6 +84,7 @@ int			node_exist(char **name_tab, t_hive *hv);
 void		enter_calc(t_hive *hv);
 void		build_web(t_hive *hv);
 int			count_via(t_node *nlst, t_via *vlst);
+void		recur_print_lst(t_node *nlst);
 
 #endif
 
