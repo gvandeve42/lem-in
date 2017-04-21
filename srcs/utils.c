@@ -48,3 +48,18 @@ void	scrap_ant(t_hive *hv, char **line)
 				}
 		}
 }
+
+int		count_via(t_node *nlst, t_via *vlst)
+{
+	int		nbvia;
+
+	nbvia = 0;
+	while (vlst != NULL)
+		{
+			if (ft_strcmp(vlst->n1, nlst->name) == 0 ||
+				ft_strcmp(vlst->n2, nlst->name) == 0)
+				nbvia++;
+			vlst = vlst->link;
+		}
+	return (nbvia);
+}

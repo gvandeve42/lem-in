@@ -104,11 +104,10 @@ int		main(void)
 				scrap_info(&line, hive);
 			free(line);
 		}
-	print_lst_n(hive->start);
-	print_lst_n(hive->end);
-	print_lst_n(hive->n_lst);
-	print_lst_v(hive->v_lst);
-	//enter_calc(hive);
+	enter_calc(hive);
+	//print_lst_n(hive->start);
+	//print_lst_v(hive->v_lst);
+	//print_lst_n(hive->n_lst);
 	free_hive(hive);
 	return (0);
 }

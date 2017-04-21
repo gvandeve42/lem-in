@@ -57,12 +57,12 @@ int		node_exist(char **name_tab, t_hive *hv)
 		hv->end != NULL &&
 		hv->n_lst != NULL)
 		{
-			if (ft_strcmp(name_tab[0], hv->start->name) != 0 &&
-				ft_strcmp(name_tab[0], hv->end->name) != 0 &&
-				!search_node(name_tab[0], hv->n_lst) ||
-				ft_strcmp(name_tab[1], hv->start->name) != 0 &&
-				ft_strcmp(name_tab[1], hv->end->name) != 0 &&
-				!search_node(name_tab[1], hv->n_lst))
+			if (((ft_strcmp(name_tab[0], hv->start->name) != 0 &&
+				  ft_strcmp(name_tab[0], hv->end->name) != 0) &&
+				 !search_node(name_tab[0], hv->n_lst)) ||
+				((ft_strcmp(name_tab[1], hv->start->name) != 0 &&
+				  ft_strcmp(name_tab[1], hv->end->name) != 0) &&
+				 !search_node(name_tab[1], hv->n_lst)))
 				{
 					free_all(hv, name_tab, NULL);
 					ft_printf("Error : Via between nodes that don't exist\n");
