@@ -15,6 +15,7 @@
 
 # include <string.h>
 # include <errno.h>
+# include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
@@ -41,13 +42,14 @@ struct	s_prec
 
 struct	s_node
 {
-	char	*name;
-	int		ant;
-	int		x;
-	int		y;
-	t_prec	*prec;
-	t_node	**via;
-	t_node	*link;
+	char				*name;
+	int					ant;
+	int					x;
+	int					y;
+	unsigned long int	pnd;
+	t_prec				*prec;
+	t_node				**via;
+	t_node				*link;
 };
 
 struct	s_via

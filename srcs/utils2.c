@@ -7,10 +7,10 @@ void	recur_print_lst(t_node *nlst)
 	i = 0;
 	if (nlst == NULL)
 		return;
-	ft_printf("|node : %s|\n", nlst->name);
+	ft_printf("%5s|node : name|%10s||%5llu|\n", "", nlst->name, nlst->pnd);
 	while (nlst->via[i] != 0)
 		{
-			ft_printf("|   under->node : %s\n", nlst->via[i]->name);
+			ft_printf("%10s|under-node : name|%10s||%5llu|\n", "", nlst->via[i]->name, nlst->via[i]->pnd);
 			i++;
 		}
 	recur_print_lst(nlst->link);

@@ -17,7 +17,10 @@ void	check_start(char **tab, t_hive *hv, char *line)
 	if (len(tab) == 3 && is_node(tab, hv, line))
 		{
 			if (node_viable(tab, hv, line))
-				hv->start = new_elem_n(tab[0], tab[1], tab[2], hv->start);
+				{
+					hv->start = new_elem_n(tab[0], tab[1], tab[2], hv->start);
+					hv->start->pnd = 0;
+				}
 		}
 		else
 		{
