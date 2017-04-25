@@ -10,6 +10,15 @@ int		len(char **tab)
 	return (i);
 }
 
+void	print_lst_p(t_node *lst)
+{
+	if (lst != NULL)
+		{
+			ft_printf("|||NODE : %10s, %10d, %10d, %10d|||\n", lst->name, lst->x, lst->y, lst->pnd);
+			print_lst_p(lst->prec);
+		}
+}
+
 void	print_lst_n(t_node *lst)
 {
 	if (lst != NULL)

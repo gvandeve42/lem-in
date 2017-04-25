@@ -105,7 +105,6 @@ int		main(void)
 			free(line);
 		}
 	enter_calc(hive);
-	recur_print_lst(hive->start);
 	free_hive(hive);
 	return (0);
 }

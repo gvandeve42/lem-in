@@ -34,22 +34,16 @@ struct	s_hive
 	t_via	*v_lst;
 };
 
-struct	s_prec
-{
-	char	*name;
-	int		weigth;
-};
-
 struct	s_node
 {
-	char				*name;
-	int					ant;
-	int					x;
-	int					y;
-	unsigned long int	pnd;
-	t_prec				*prec;
-	t_node				**via;
-	t_node				*link;
+	char	*name;
+	int		ant;
+	int		x;
+	int		y;
+	int		pnd;
+	t_node	*prec;
+	t_node	**via;
+	t_node	*link;
 };
 
 struct	s_via
@@ -87,6 +81,9 @@ void		enter_calc(t_hive *hv);
 void		build_web(t_hive *hv);
 int			count_via(t_node *nlst, t_via *vlst);
 void		recur_print_lst(t_node *nlst);
+void		build_way(t_hive *hv);
+void		expl_via(t_node *lst, t_node **vlst, unsigned long int pnd, t_node *end);
+void		print_lst_p(t_node *lst);
 
 #endif
 

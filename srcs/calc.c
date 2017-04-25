@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-static int is_good(t_node *node, int pnd)
+static int is_good(t_node *node, unsigned long int pnd)
 {
 	if (pnd > node->pnd)
 		return (0);
@@ -8,18 +8,15 @@ static int is_good(t_node *node, int pnd)
 	return (1);
 }
 
-static void	expl_via(t_node *lst, t_node **vlst, int pnd, t_node *end)
+void	expl_via(t_node *lst, t_node **vlst, unsigned long int pnd, t_node *end)
 {
-	if (lst == end || lst == 0)
+	if (lst == end)
 		return;
-	if (*vlst != 0)
-		{
-			if (is_good(*vlst, pnd))
-				expl_via(*vlst, (*vlst)->via, pnd + 1, end);
-			else
-				expl_via(lst, (lst->via + 1), pnd, end);
-		}
-	return;
+	if (*vlst == NULL)
+		return;
+	if (is_good(*vlst, pnd + 1))
+		expl_via(*vlst, (*vlst)->via, pnd + 1, end);
+	expl_via(lst, ++vlst, pnd, end);
 }
 
 void	enter_calc(t_hive *hv)
@@ -35,6 +32,8 @@ void	enter_calc(t_hive *hv)
 	else
 		{
 			build_web(hv);
-			expl_via(hv->start, hv->start->via, 1, hv->end);
+			expl_via(hv->start, hv->start->via, 0, hv->end);
+			recur_print_lst(hv->start);
+			build_way(hv);
 		}
 }

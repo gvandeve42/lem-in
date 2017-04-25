@@ -8,7 +8,7 @@ t_node	*init_node(char *name, char *x, char *y)
 	new_node->name = ft_strdup(name);
 	new_node->x = (ft_atoi(x));
 	new_node->y = (ft_atoi(y));
-	new_node->pnd = ULONG_MAX;
+	new_node->pnd = INT_MAX;
 	return (new_node);
 }
 
