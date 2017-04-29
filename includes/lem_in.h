@@ -30,6 +30,7 @@ struct	s_hive
 	int		ant;
 	t_node	*start;
 	t_node	*end;
+	t_node	**way;
 	t_node	*n_lst;
 	t_via	*v_lst;
 };
@@ -81,9 +82,11 @@ void		enter_calc(t_hive *hv);
 void		build_web(t_hive *hv);
 int			count_via(t_node *nlst, t_via *vlst);
 void		recur_print_lst(t_node *nlst);
-void		build_way(t_hive *hv);
-void		expl_via(t_node *lst, t_node **vlst, unsigned long int pnd, t_node *end);
+void		build_way(t_hive *hv, t_node **way);
+void		expl_via(t_node *lst, t_node **vlst, int pnd, t_node *end);
 void		print_lst_p(t_node *lst);
+void		format(t_hive *hv);
+void		add_last(t_node *node, t_node *add);
 
 #endif
 

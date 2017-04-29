@@ -10,64 +10,67 @@ static int	count_way(t_node *end)
 	return (i);
 }
 
-static int	add_way(t_node **way, t_node *start)
+static t_node	*add_way(t_node *start)
 {
 	int		i;
 	int		j;
+	t_node	*tmp;
 
 	i = INT_MAX;
 	j = 0;
+	tmp = NULL;
 	while (start->via[j] != NULL)
 		{
 			if ((start->via[j])->pnd >= 0 &&
 				(start->via)[j]->pnd <= i)
 				{
 					i = (start->via[j])->pnd;
-					*way = start->via[j];
+					tmp = start->via[j];
 				}
 			j++;
 		}
 	if (i != INT_MAX)
-		return (1);
+		return (tmp);
 	else
-		return (0);
+		return (NULL);
 }
 
-static int	recur_deploy(t_node *init, t_node *end)
+static t_node	*recur_deploy(t_node *init, t_node *end)
 {
-	if (init == end)
-		return (1);
-	if (add_way(&(init->prec), init))
-		{
-			if (init->prec->pnd > 0)
-				init->prec->pnd = -1;
-			recur_deploy(init->prec, end);
-		}
+	t_node	*tmp;
+
+	init->pnd = -1;
+	tmp = add_way(init);
+	if (tmp == end)
+		return (init);
+	if (tmp == NULL)
+		return (NULL);
+	tmp->prec = init;
+	recur_deploy(tmp, end);
 }
 
-void	build_way(t_hive *hv)
+static void reinit_tree(t_node *tree)
 {
-	t_node	**way;
+	if (tree == NULL)
+		return;
+	if (tree->pnd > 0)
+		tree->pnd = INT_MAX;
+	reinit_tree(tree->link);
+}
+
+void	build_way(t_hive *hv, t_node **way)
+{
 	int		i;
+	t_node	*tmp;
 
 	i = 0;
 	way = (t_node**)ft_memalloc((count_way(hv->end) + 1) * sizeof(t_node*));
-	while (add_way(&way[i], hv->end))
+	while ((tmp = add_way(hv->end)) != NULL)
 		{
-			way[i]->pnd = -1;
+			way[i] = recur_deploy(tmp, hv->start);
+			add_last(way[i], hv->end);
+			reinit_tree(hv->start);
+			expl_via(hv->start, hv->start->via, 0, hv->end);
 			i++;
 		}
-	i = 0;
-	while (way[i] != NULL)
-		{
-			//expl_via(hv->start, hv->start->via, 0, hv->end);
-			//recur_print_lst(hv->start);
-			if (recur_deploy(way[i], hv->start))
-				{
-					print_lst_p(way[i]);
-					i++;
-				}
-		}
-	//purge(way);
-	free(way);
 }

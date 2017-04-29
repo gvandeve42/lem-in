@@ -95,6 +95,7 @@ int		main(void)
 	hive = (t_hive*)ft_memalloc(sizeof(t_hive));
 	while (get_next_line(0, &line))
 		{
+			//ft_printf("%s\n", line);
 			scrap_ant(hive, &line);
 			if (ft_strcmp(line, "##start") == 0)
 				scrap_start(&line, hive);

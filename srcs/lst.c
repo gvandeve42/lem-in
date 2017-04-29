@@ -1,5 +1,12 @@
 #include "lem_in.h"
 
+void	add_last(t_node *node, t_node *add)
+{
+	while (node->prec != NULL)
+		node = node->prec;
+	node->prec = add;
+}
+
 t_node	*new_elem_n(char *name, char *x, char *y, t_node *nd)
 {
 	t_node	*anchor;
