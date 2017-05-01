@@ -46,7 +46,7 @@ static t_node	*recur_deploy(t_node *init, t_node *end)
 	if (tmp == NULL)
 		return (NULL);
 	tmp->prec = init;
-	recur_deploy(tmp, end);
+	return (recur_deploy(tmp, end));
 }
 
 static void reinit_tree(t_node *tree)
