@@ -33,7 +33,7 @@ void	enter_calc(t_hive *hv)
 		{
 			build_web(hv);
 			expl_via(hv->start, hv->start->via, 0, hv->end);
-			build_way(hv, hv->way);
-			free(hv->way);
+			build_way(hv);
+			format(hv);
 		}
 }

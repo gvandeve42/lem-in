@@ -58,19 +58,22 @@ static void reinit_tree(t_node *tree)
 	reinit_tree(tree->link);
 }
 
-void	build_way(t_hive *hv, t_node **way)
+void	build_way(t_hive *hv)
 {
 	int		i;
 	t_node	*tmp;
 
 	i = 0;
-	way = (t_node**)ft_memalloc((count_way(hv->end) + 1) * sizeof(t_node*));
+	hv->way = (t_node**)ft_memalloc((count_way(hv->end) + 1) * sizeof(t_node*));
 	while ((tmp = add_way(hv->end)) != NULL)
 		{
-			way[i] = recur_deploy(tmp, hv->start);
-			add_last(way[i], hv->end);
+			(hv->way)[i] = recur_deploy(tmp, hv->start);
+			add_last((hv->way)[i], hv->end);
 			reinit_tree(hv->start);
 			expl_via(hv->start, hv->start->via, 0, hv->end);
 			i++;
 		}
+	i = 0;
+	while ((hv->way)[i] != NULL)
+		print_lst_p((hv->way)[i++]);
 }

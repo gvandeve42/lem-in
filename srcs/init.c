@@ -9,6 +9,7 @@ t_node	*init_node(char *name, char *x, char *y)
 	new_node->x = (ft_atoi(x));
 	new_node->y = (ft_atoi(y));
 	new_node->pnd = INT_MAX;
+	new_node->ant = 0;
 	return (new_node);
 }
 
@@ -21,6 +22,8 @@ t_via	*init_via(char *name1, char *name2)
 	new_via->n2 = ft_strdup(name2);
 	return (new_via);
 }
+
+
 
 t_hive	*init_hive(void)
 {

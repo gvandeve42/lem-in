@@ -1,5 +1,28 @@
 #include "lem_in.h"
 
+int		lenn(t_node **node)
+{
+	int i;
+
+	i = 0;
+	while (node[i] != NULL)
+		i++;
+	return (i);
+}
+
+int		llen(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	while (node != NULL)
+		{
+			i++;
+			node = node->prec;
+		}
+	return (i);
+}
+
 void	recur_print_lst(t_node *nlst)
 {
 	int		i;

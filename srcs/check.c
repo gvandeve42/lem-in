@@ -47,14 +47,14 @@ int		via_viable(char **tab, t_hive *hv, char *line)
 	tmp = hv->v_lst;
 	while (tmp != NULL)
 	{
-		if ((strcmp(tab[0], tmp->n1) == 0 && strcmp(tab[1], tmp->n2) == 0) ||
+		/*if ((strcmp(tab[0], tmp->n1) == 0 && strcmp(tab[1], tmp->n2) == 0) ||
 			(strcmp(tab[1], tmp->n1) == 0 && strcmp(tab[0], tmp->n2) == 0) ||
 			strcmp(tab[1], tab[0]) == 0)
 		{
 			free_all(hv, tab, line);
 			ft_printf("Error : Duplicate of via name or position\n");
 			exit (1);
-		}
+			}*/
 		tmp = tmp->link;
 	}
 	return (1);

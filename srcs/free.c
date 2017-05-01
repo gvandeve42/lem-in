@@ -28,6 +28,7 @@ void	free_hive(t_hive *hive)
 {
 	free_node(hive->start);
 	free_via(hive->v_lst);
+	free(hive->way);
 	free(hive);
 }
 
