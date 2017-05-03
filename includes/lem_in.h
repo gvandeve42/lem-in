@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 12:12:18 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/04/19 14:45:19 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/02 14:53:35 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void		format(t_hive *hv);
 void		add_last(t_node *node, t_node *add);
 int			llen(t_node *node);
 int			lenn(t_node **node);
+char		*get_name(t_node *node, int nb);
+void		format_rsp(t_hive *hv, int *nbl, int *nbf);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 14:25:22 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/04/19 14:42:20 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/02 10:49:39 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	search_node(char *name, t_node *lst)
 		return (0);
 	if (ft_strcmp(name, lst->name) == 0)
 		return (1);
-	search_node(name, lst->link);
+	return (search_node(name, lst->link));
 }
 
 int		node_exist(char **name_tab, t_hive *hv)
