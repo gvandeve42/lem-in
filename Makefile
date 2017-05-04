@@ -16,7 +16,7 @@ INCLUDE		=	./includes
 SRC			=	$(DIRSRC)/*.c
 OBJ			=	*.o
 LIB			=	libft/libftprintf.a
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-g -Wall -Wextra -Werror
 CC			=	gcc
 
 all: $(NAME)
