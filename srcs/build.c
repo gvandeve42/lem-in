@@ -7,6 +7,15 @@ static t_node *add_end(t_hive *hv)
 
 	new = hv->end;
 	tmp = hv->n_lst;
+	if (tmp == NULL)
+		{
+			hv->start->via = (t_node**)ft_memalloc(2 *sizeof(t_node*));
+			hv->end->via = (t_node**)ft_memalloc(2 *sizeof(t_node*));
+			hv->start->via[0] = hv->end;
+			hv->end->via[0] = hv->start;
+			hv->end->pnd = 1;
+			return (NULL);
+		}
 	while (tmp->link != NULL)
 		tmp = tmp->link;
 	tmp->link = hv->end;
@@ -87,7 +96,9 @@ static void		init_all_nodes(t_node *nlst, t_via *vlst)
 void	build_web(t_hive *hv)
 {
 	add_start(hv);
-	add_end(hv);
+	if (add_end(hv) == NULL)
+		return;
 	init_all_nodes(hv->start, hv->v_lst);
 	recur_via(hv->start, hv->start, hv->v_lst);
+	return;
 }

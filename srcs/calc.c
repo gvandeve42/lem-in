@@ -23,7 +23,6 @@ void	enter_calc(t_hive *hv)
 {
 	if (hv->start == NULL ||
 		hv->end == NULL ||
-		hv->n_lst == NULL ||
 		hv->v_lst == NULL)
 		{
 			ft_printf("Error : File incomplete\n");

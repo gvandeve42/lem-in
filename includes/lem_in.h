@@ -102,6 +102,7 @@ t_buff		*new_elem_b(char *line, t_buff *buff);
 t_buff		*init_buff(char *line);
 void		free_buff(t_buff *buff);
 void		print_buff(t_buff *buff);
+int			is_startend(t_hive *hv);
 
 #endif
 
