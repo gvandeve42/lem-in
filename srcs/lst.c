@@ -45,6 +45,25 @@ t_via	*new_elem_v(char *name1, char *name2, t_via *via)
 	return (anchor);
 }
 
+t_buff	*new_elem_b(char *line, t_buff *buff)
+{
+	t_buff	*anchor;
+
+	anchor = buff;
+	if (buff == NULL)
+		{
+			buff = init_buff(line);
+			return (buff);
+		}
+	else
+		{
+			while (buff->next != NULL)
+				buff = buff->next;
+			buff->next = init_buff(line);
+		}
+	return (anchor);
+}
+
 
 
 

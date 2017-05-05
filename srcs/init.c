@@ -23,7 +23,15 @@ t_via	*init_via(char *name1, char *name2)
 	return (new_via);
 }
 
+t_buff	*init_buff(char *line)
+{
+	t_buff	*buff;
 
+	buff = (t_buff*)ft_memalloc(sizeof(t_buff));
+	buff->buff = ft_strdup(line);
+	buff->next = NULL;
+	return (buff);
+}
 
 t_hive	*init_hive(void)
 {

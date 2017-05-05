@@ -46,6 +46,7 @@ void	scrap_ant(t_hive *hv, char **line)
 			flag = 42;
 			if (is_nb(*line))
 				{
+					hv->buff = new_elem_b(*line, hv->buff);
 					hv->ant = ft_atoi(*line);
 					free(*line);
 					get_next_line(0, line);

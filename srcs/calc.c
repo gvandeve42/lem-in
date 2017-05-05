@@ -33,8 +33,8 @@ void	enter_calc(t_hive *hv)
 		{
 			build_web(hv);
 			expl_via(hv->start, hv->start->via, 0, hv->end);
-			recur_print_lst(hv->start);
 			build_way(hv);
+			print_buff(hv->buff);
 			format(hv);
 		}
 }

@@ -73,7 +73,4 @@ void	build_way(t_hive *hv)
 			expl_via(hv->start, hv->start->via, 0, hv->end);
 			i++;
 		}
-	i = 0;
-	while ((hv->way)[i] != NULL)
-		print_lst_p((hv->way)[i++]);
 }

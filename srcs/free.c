@@ -28,6 +28,7 @@ void	free_hive(t_hive *hive)
 {
 	free_node(hive->start);
 	free_via(hive->v_lst);
+	free_buff(hive->buff);
 	free(hive->way);
 	free(hive);
 }
@@ -53,7 +54,16 @@ void	free_all(t_hive *hv, char **tab, char *line)
 }
 
 
-
+void	free_buff(t_buff *buff)
+{
+	if (buff != NULL)
+	{
+		if (buff->next != NULL)
+			free_buff(buff->next);
+		free(buff->buff);
+		free(buff);
+	}
+}
 
 
 

@@ -38,3 +38,26 @@ void	recur_print_lst(t_node *nlst)
 		}
 	recur_print_lst(nlst->link);
 }
+
+void	print_buff(t_buff *buff)
+{
+	if (buff == NULL)
+		{
+			ft_printf("Error\n");
+			exit(1);
+		}
+	else
+		while (buff != NULL)
+			{
+				ft_printf("%s\n", buff->buff);
+				buff = buff->next;
+			}
+	return;
+	/*
+	if (buff == NULL)
+		return;
+		ft_printf("%s\n", buff->buff);
+	print_buff(buff->next);
+	return;
+	*/
+}

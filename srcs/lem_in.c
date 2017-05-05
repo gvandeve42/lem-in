@@ -44,9 +44,11 @@ static void	scrap_start(char **line, t_hive *hv)
 
 	if (flag != 42)
 	{
+		hv->buff = new_elem_b(*line, hv->buff);
 		flag = 42;
 		free(*line);
 		get_next_line(0, line);
+		hv->buff = new_elem_b(*line, hv->buff);
 		tab = ft_strsplit(*line, ' ');
 		check_start(tab, hv, *line);
 		free_tab(tab);
@@ -68,9 +70,11 @@ static void	scrap_end(char **line, t_hive *hv)
 
 	if (flag != 42)
 	{
+		hv->buff = new_elem_b(*line, hv->buff);
 		flag = 42;
 		free(*line);
 		get_next_line(0, line);
+		hv->buff = new_elem_b(*line, hv->buff);
 		tab = ft_strsplit(*line, ' ');
 		check_end(tab, hv, *line);
 		free_tab(tab);
@@ -95,12 +99,12 @@ int		main(void)
 	hive = (t_hive*)ft_memalloc(sizeof(t_hive));
 	while (get_next_line(0, &line))
 		{
-			//ft_printf("%s\n", line);
 			scrap_ant(hive, &line);
 			if (ft_strcmp(line, "##start") == 0)
 				scrap_start(&line, hive);
 			if (ft_strcmp(line, "##end") == 0)
 				scrap_end(&line, hive);
+			hive->buff = new_elem_b(line, hive->buff);
 			if (ft_strncmp(line, "#", 1) != 0)
 				scrap_info(&line, hive);
 			free(line);

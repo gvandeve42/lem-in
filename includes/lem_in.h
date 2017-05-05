@@ -24,6 +24,7 @@ typedef struct s_hive	t_hive;
 typedef struct s_prec	t_prec;
 typedef struct s_node	t_node;
 typedef struct s_via	t_via;
+typedef struct s_buff	t_buff;
 
 struct	s_hive
 {
@@ -33,6 +34,7 @@ struct	s_hive
 	t_node	**way;
 	t_node	*n_lst;
 	t_via	*v_lst;
+	t_buff	*buff;
 };
 
 struct	s_node
@@ -54,6 +56,11 @@ struct	s_via
 	t_via	*link;
 };
 
+struct	s_buff
+{
+	char 	*buff;
+	t_buff	*next;
+};
 
 t_node		*init_node(char *name, char *x, char *y);
 t_node		*new_elem_n(char *name, char *x, char *y, t_node *nd);
@@ -91,6 +98,10 @@ int			llen(t_node *node);
 int			lenn(t_node **node);
 char		*get_name(t_node *node, int nb);
 void		format_rsp(t_hive *hv, int *nbl, int *nbf);
+t_buff		*new_elem_b(char *line, t_buff *buff);
+t_buff		*init_buff(char *line);
+void		free_buff(t_buff *buff);
+void		print_buff(t_buff *buff);
 
 #endif
 
