@@ -104,11 +104,13 @@ int		main(void)
 				scrap_start(&line, hive);
 			if (ft_strcmp(line, "##end") == 0)
 				scrap_end(&line, hive);
-			hive->buff = new_elem_b(line, hive->buff);
+			if (ft_strncmp(line, "#", 1) != 0)
+				hive->buff = new_elem_b(line, hive->buff);
 			if (ft_strncmp(line, "#", 1) != 0)
 				scrap_info(&line, hive);
 			free(line);
 		}
+
 	enter_calc(hive);
 	free_hive(hive);
 	return (0);

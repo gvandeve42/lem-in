@@ -64,7 +64,14 @@ void	format(t_hive *hv)
 			i++;
 		}
 	max = get_max(nbl);
-	set_nbf(nbf, nbl, max, hv->ant);
+	if ((hv->way)[0] != NULL)
+		set_nbf(nbf, nbl, max, hv->ant);
+	else
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit (1);
+		}
+	print_buff(hv->buff);
 	format_rsp(hv, nbl, nbf);
 	free(nbl);
 	free(nbf);
