@@ -30,7 +30,7 @@ static void	scrap_info(char **line, t_hive *hv)
 			else
 			{
 				free_all(hv, tab, NULL);
-				ft_printf("Error : File bad formatted\n");
+				ft_putstr_fd("Error : File bad formatted\n", 2);
 				exit(1);
 			}
 		}
@@ -58,7 +58,7 @@ static void	scrap_start(char **line, t_hive *hv)
 	else
 	{
 		free_all(hv, tab, *line);
-		ft_printf("Error : Duplicate of start\n");
+		ft_putstr_fd("Error : Duplicate of start\n", 2);
 		exit (1);
 	}
 }
@@ -84,7 +84,7 @@ static void	scrap_end(char **line, t_hive *hv)
 	else
 	{
 		free_all(hv, tab, *line);
-		ft_printf("Error : Duplicate of end\n");
+		ft_putstr_fd("Error : Duplicate of end\n", 2);
 		exit (1);
 	}
 }

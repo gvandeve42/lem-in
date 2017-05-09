@@ -25,7 +25,7 @@ void	check_start(char **tab, t_hive *hv, char *line)
 		else
 		{
 			free_all(hv, tab, line);
-			ft_printf("Error : Start bad formatted\n");
+			ft_putstr_fd("Error : Start bad formatted\n", 2);
 			exit (1);
 		}
 }
@@ -40,7 +40,7 @@ void	check_end(char **tab, t_hive *hv, char *line)
 		else
 		{
 			free_all(hv, tab, line);
-			ft_printf("Error : End bad formatted\n");
+			ft_putstr_fd("Error : End bad formatted\n", 2);
 			exit (1);
 		}
 }
@@ -69,7 +69,7 @@ int		node_exist(char **name_tab, t_hive *hv)
 				  !search_node(name_tab[1], hv->n_lst))))
 				{
 					free_all(hv, name_tab, NULL);
-					ft_printf("Error : Via between nodes that don't exist\n");
+					ft_putstr_fd("Error : Via between nodes that don't exist\n", 2);
 					exit (1);
 				}
 			else

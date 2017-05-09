@@ -53,7 +53,7 @@ void	scrap_ant(t_hive *hv, char **line)
 				}
 			else
 				{
-					ft_printf("Error : ant number bad formated\n");
+					ft_putstr_fd("Error : ant number bad formated\n", 2);
 					exit (1);
 				}
 		}

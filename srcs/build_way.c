@@ -87,7 +87,7 @@ void	build_way(t_hive *hv)
 			hv->way[0] = hv->end;
 			if (!is_startend(hv))
 				{
-					ft_printf("Error: Pas de via valide\n");
+					ft_putstr_fd("Error: Pas de via valide\n", 2);
 					exit (1);
 				}
 			return;

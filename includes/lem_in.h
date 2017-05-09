@@ -79,7 +79,6 @@ void		print_lst_v(t_via *lst);
 t_via		*init_via(char *name1, char *name2);
 t_via		*new_elem_v(char *name1, char *name2, t_via *via);
 int			node_viable(char **tab, t_hive *hv, char *line);
-int			via_viable(char **tab, t_hive *hv, char *line);
 void		check_start(char **tab, t_hive *hv, char *line);
 void		check_end(char **tab, t_hive *hv, char *line);
 void		free_all(t_hive *hv, char **tab, char *line);

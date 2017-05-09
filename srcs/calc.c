@@ -25,7 +25,7 @@ void	enter_calc(t_hive *hv)
 		hv->end == NULL ||
 		hv->v_lst == NULL)
 		{
-			ft_printf("Error : File incomplete\n");
+			ft_putstr_fd("Error : File incomplete\n", 2);
 			exit (1);
 		}
 	else

@@ -53,11 +53,4 @@ void	print_buff(t_buff *buff)
 				buff = buff->next;
 			}
 	return;
-	/*
-	if (buff == NULL)
-		return;
-		ft_printf("%s\n", buff->buff);
-	print_buff(buff->next);
-	return;
-	*/
 }
