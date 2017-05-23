@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/23 15:52:30 by gvandeve          #+#    #+#             */
+/*   Updated: 2017/05/23 16:07:01 by gvandeve         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	free_node(t_node *lst)
@@ -33,16 +45,6 @@ void	free_hive(t_hive *hive)
 	free(hive);
 }
 
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i] != 0)
-		free(tab[i++]);
-	free(tab);
-}
-
 void	free_all(t_hive *hv, char **tab, char *line)
 {
 	if (hv != NULL)
@@ -52,7 +54,6 @@ void	free_all(t_hive *hv, char **tab, char *line)
 	if (line != NULL)
 		free(line);
 }
-
 
 void	free_buff(t_buff *buff)
 {
@@ -64,10 +65,3 @@ void	free_buff(t_buff *buff)
 		free(buff);
 	}
 }
-
-
-
-
-
-
-

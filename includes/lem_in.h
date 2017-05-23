@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 12:12:18 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/02 14:53:35 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/23 16:14:05 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_node	t_node;
 typedef struct s_via	t_via;
 typedef struct s_buff	t_buff;
 
-struct	s_hive
+struct		s_hive
 {
 	int		ant;
 	t_node	*start;
@@ -37,7 +37,7 @@ struct	s_hive
 	t_buff	*buff;
 };
 
-struct	s_node
+struct		s_node
 {
 	char	*name;
 	int		ant;
@@ -49,16 +49,16 @@ struct	s_node
 	t_node	*link;
 };
 
-struct	s_via
+struct		s_via
 {
 	char	*n1;
 	char	*n2;
 	t_via	*link;
 };
 
-struct	s_buff
+struct		s_buff
 {
-	char 	*buff;
+	char	*buff;
 	t_buff	*next;
 };
 
@@ -102,23 +102,10 @@ t_buff		*init_buff(char *line);
 void		free_buff(t_buff *buff);
 void		print_buff(t_buff *buff);
 int			is_startend(t_hive *hv);
+void		init_frm(t_node *way, int len, int ant_nb, int ant_start);
+void		pp_frm(t_node *way, int len, int ant_nb, int ant_start);
+void		pr_frm(t_node *way, int len, int ant_nb, int ant_start);
+t_node		*add_start(t_hive *hv);
+t_node		*add_end(t_hive *hv);
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

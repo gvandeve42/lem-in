@@ -6,43 +6,43 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 14:25:22 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/02 10:49:39 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:38:11 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	check_start(char **tab, t_hive *hv, char *line)
+void		check_start(char **tab, t_hive *hv, char *line)
 {
 	if (len(tab) == 3 && is_node(tab, hv, line))
+	{
+		if (node_viable(tab, hv, line))
 		{
-			if (node_viable(tab, hv, line))
-				{
-					hv->start = new_elem_n(tab[0], tab[1], tab[2], hv->start);
-					hv->start->pnd = 0;
-				}
+			hv->start = new_elem_n(tab[0], tab[1], tab[2], hv->start);
+			hv->start->pnd = 0;
 		}
-		else
-		{
-			free_all(hv, tab, line);
-			ft_putstr_fd("Error : Start bad formatted\n", 2);
-			exit (1);
-		}
+	}
+	else
+	{
+		free_all(hv, tab, line);
+		ft_putstr_fd("Error : Start bad formatted\n", 2);
+		exit(1);
+	}
 }
 
-void	check_end(char **tab, t_hive *hv, char *line)
+void		check_end(char **tab, t_hive *hv, char *line)
 {
 	if (len(tab) == 3 && is_node(tab, hv, line))
-		{
-			if (node_viable(tab, hv, line))
-				hv->end = new_elem_n(tab[0], tab[1], tab[2], hv->end);
-		}
-		else
-		{
-			free_all(hv, tab, line);
-			ft_putstr_fd("Error : End bad formatted\n", 2);
-			exit (1);
-		}
+	{
+		if (node_viable(tab, hv, line))
+			hv->end = new_elem_n(tab[0], tab[1], tab[2], hv->end);
+	}
+	else
+	{
+		free_all(hv, tab, line);
+		ft_putstr_fd("Error : End bad formatted\n", 2);
+		exit(1);
+	}
 }
 
 static int	search_node(char *name, t_node *lst)
@@ -54,45 +54,26 @@ static int	search_node(char *name, t_node *lst)
 	return (search_node(name, lst->link));
 }
 
-int		node_exist(char **name_tab, t_hive *hv)
+int			node_exist(char **name_tab, t_hive *hv)
 {
 	if (hv->start != NULL &&
 		hv->end != NULL)
+	{
+		if (((ft_strcmp(name_tab[0], hv->start->name) != 0 &&
+				ft_strcmp(name_tab[0], hv->end->name) != 0) &&
+				(hv->n_lst == NULL ||
+				!search_node(name_tab[0], hv->n_lst))) ||
+			((ft_strcmp(name_tab[1], hv->start->name) != 0 &&
+				ft_strcmp(name_tab[1], hv->end->name) != 0) &&
+				(hv->n_lst == NULL ||
+				!search_node(name_tab[1], hv->n_lst))))
 		{
-			if (((ft_strcmp(name_tab[0], hv->start->name) != 0 &&
-				  ft_strcmp(name_tab[0], hv->end->name) != 0) &&
-				 (hv->n_lst == NULL ||
-				  !search_node(name_tab[0], hv->n_lst))) ||
-				((ft_strcmp(name_tab[1], hv->start->name) != 0 &&
-				  ft_strcmp(name_tab[1], hv->end->name) != 0) &&
-				 (hv->n_lst == NULL ||
-				  !search_node(name_tab[1], hv->n_lst))))
-				{
-					free_all(hv, name_tab, NULL);
-					ft_putstr_fd("Error : Via between nodes that don't exist\n", 2);
-					exit (1);
-				}
-			else
-				return (1);
+			free_all(hv, name_tab, NULL);
+			ft_putstr_fd("Error : Via between nodes that don't exist\n", 2);
+			exit(1);
 		}
+		else
+			return (1);
+	}
 	return (0);
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

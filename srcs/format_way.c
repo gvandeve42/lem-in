@@ -6,64 +6,57 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/02 10:53:56 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/03 18:22:45 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/23 16:02:38 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void	push_frm(t_node *way, int len, int ant_nb, int ant_start)
+static void		push_frm(t_node *way, int len, int ant_nb, int ant_start)
 {
 	if (ant_nb > 0)
+	{
+		if (way->prec == NULL)
 		{
-			if (way->prec == NULL)// && way->ant != 0)
-				{
-					way->ant++;
-					ft_printf("L%d-%s ", way->ant, way->name);
-					return ;
-				}
-			else if (way->prec->ant == 0 && way->ant == 0)
-				{
-					way->ant = ant_start;
-					ft_printf("L%d-%s ", way->ant, way->name);
-					return;
-				}
-			else if (way->prec->ant == 0 && way->ant != 0)
-				{
-					way->prec->ant = way->ant;
-					way->ant++;
-					ft_printf("L%d-%s ", way->ant, way->name);
-					ft_printf("L%d-%s ", way->prec->ant, way->prec->name);
-					return;
-				}
-			else if (way->prec->ant != 0 && way->ant != 0)
-				{
-					way->ant++;
-					ft_printf("L%d-%s ", way->ant, way->name);
-				}
+			way->ant++;
+			ft_printf("L%d-%s ", way->ant, way->name);
+			return ;
 		}
+		else if (way->prec->ant == 0 && way->ant == 0)
+		{
+			init_frm(way, len, ant_nb, ant_start);
+			return ;
+		}
+		else if (way->prec->ant == 0 && way->ant != 0)
+		{
+			pp_frm(way, len, ant_nb, ant_start);
+			return ;
+		}
+		else if (way->prec->ant != 0 && way->ant != 0)
+			pr_frm(way, len, ant_nb, ant_start);
+	}
 	else
-		return;
+		return ;
 	push_frm(way->prec, len, ant_nb, ant_start);
-	return;
+	return ;
 }
 
-static void	free_frm(t_node *way, int bef)
+static void		free_frm(t_node *way, int bef)
 {
 	int tmp;
 
 	tmp = 0;
 	if (way == NULL)
-		return;
+		return ;
 	tmp = way->ant;
 	way->ant = bef;
 	if (way->ant > 0)
 		ft_printf("L%d-%s ", way->ant, way->name);
 	free_frm(way->prec, tmp);
-	return;
+	return ;
 }
 
-static int	sum(int *tab, int len)
+static int		sum(int *tab, int len)
 {
 	int	i;
 	int rtn;
@@ -75,7 +68,7 @@ static int	sum(int *tab, int len)
 	return (rtn);
 }
 
-static void	format_way(t_hive *hv, int *len, int *ant_nb, int *ant_start)
+static void		format_way(t_hive *hv, int *len, int *ant_nb, int *ant_start)
 {
 	int		j;
 
@@ -86,22 +79,22 @@ static void	format_way(t_hive *hv, int *len, int *ant_nb, int *ant_start)
 		while ((hv->way)[j] != NULL)
 		{
 			if (ant_nb[j] > 0)
-				{
-					push_frm((hv->way)[j], len[j], ant_nb[j], ant_start[j]);
-					ant_nb[j]--;
-				}
+			{
+				push_frm((hv->way)[j], len[j], ant_nb[j], ant_start[j]);
+				ant_nb[j]--;
+			}
 			else if (len[j] > 0)
-				{
-					free_frm((hv->way)[j], 0);
-					len[j]--;
-				}
+			{
+				free_frm((hv->way)[j], 0);
+				len[j]--;
+			}
 			j++;
 		}
 		j = 0;
 	}
 }
 
-void	format_rsp(t_hive *hv, int *nbl, int *nbf)
+void			format_rsp(t_hive *hv, int *nbl, int *nbf)
 {
 	int		frm[lenn(hv->way) + 1];
 	int		i;
@@ -114,5 +107,3 @@ void	format_rsp(t_hive *hv, int *nbl, int *nbf)
 	}
 	format_way(hv, nbl, nbf, frm);
 }
-
-

@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/23 15:33:57 by gvandeve          #+#    #+#             */
+/*   Updated: 2017/05/23 15:35:28 by gvandeve         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		is_nb(char *nb)
 {
 	while (*nb)
-		{
-			if (!ft_isdigit(*nb++))
-				return (0);
-		}
+	{
+		if (!ft_isdigit(*nb++))
+			return (0);
+	}
 	return (1);
 }
 
@@ -19,10 +31,10 @@ int		is_node(char **tab, t_hive *hv, char *line)
 	{
 		free_all(hv, tab, line);
 		ft_putstr_fd("Error : File bad formatted\n", 2);
-		exit (1);
+		exit(1);
 	}
 	else
-		return(1);
+		return (1);
 }
 
 int		is_via(char **tab, t_hive *hv, char *line)
@@ -34,10 +46,10 @@ int		is_via(char **tab, t_hive *hv, char *line)
 	{
 		free_all(hv, tab, line);
 		ft_putstr_fd("Error : File bad formatted\n", 2);
-		exit (1);
+		exit(1);
 	}
 	else
-		return(1);
+		return (1);
 }
 
 int		node_viable(char **tab, t_hive *hv, char *line)
@@ -52,29 +64,9 @@ int		node_viable(char **tab, t_hive *hv, char *line)
 		{
 			free_all(hv, tab, line);
 			ft_putstr_fd("Error : Duplicate of node name or position\n", 2);
-			exit (1);
+			exit(1);
 		}
 		tmp = tmp->link;
 	}
 	return (1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
