@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 12:16:00 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/23 15:22:13 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/28 21:12:14 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,14 @@ int				main(void)
 
 	flag = 0;
 	hive = (t_hive*)ft_memalloc(sizeof(t_hive));
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		scrap_ant(hive, &line);
 		if (ft_strcmp(line, "##start") == 0)
 			scrap_start(&line, hive);
 		if (ft_strcmp(line, "##end") == 0)
 			scrap_end(&line, hive);
-		if (ft_strncmp(line, "#", 1) != 0)
-			hive->buff = new_elem_b(line, hive->buff);
+		hive->buff = new_elem_b(line, hive->buff);
 		if (ft_strncmp(line, "#", 1) != 0)
 			scrap_info(&line, hive);
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 15:55:25 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/23 16:07:33 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/05/28 21:09:23 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	scrap_ant(t_hive *hv, char **line)
 	if (flag != 42)
 	{
 		flag = 42;
-		if (is_nb(*line))
+		if (is_nb(*line) && **line != '0')
 		{
 			hv->buff = new_elem_b(*line, hv->buff);
 			hv->ant = ft_atoi(*line);
