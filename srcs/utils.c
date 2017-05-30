@@ -48,7 +48,8 @@ void	scrap_ant(t_hive *hv, char **line)
 	{
 		flag = 42;
 		if (is_nb(*line) &&
-			ft_atoi(*line) > 0)
+			ft_atoi(*line) > 0 &&
+			 ft_atoi(*line) <= 2147483600)
 		{
 			hv->buff = new_elem_b(*line, hv->buff);
 			hv->ant = ft_atoi(*line);
@@ -57,7 +58,7 @@ void	scrap_ant(t_hive *hv, char **line)
 		}
 		else
 		{
-			ft_putstr_fd("Error : ant number bad formated\n", 2);
+			ft_putstr_fd("Error : ant number bad formated or too big\n", 2);
 			exit(1);
 		}
 	}
