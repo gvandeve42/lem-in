@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include <stdio.h>
 
 static void		scrap_info(char **line, t_hive *hv)
 {
@@ -40,12 +41,12 @@ static void		scrap_info(char **line, t_hive *hv)
 static void		scrap_start(char **line, t_hive *hv)
 {
 	char		**tab;
-	static int	flag;
+	static int	flag_start = 0;
 
-	if (flag != 42)
+	if (flag_start != 42)
 	{
 		hv->buff = new_elem_b(*line, hv->buff);
-		flag = 42;
+		flag_start = 42;
 		free(*line);
 		get_next_line(0, line);
 		hv->buff = new_elem_b(*line, hv->buff);
@@ -66,12 +67,12 @@ static void		scrap_start(char **line, t_hive *hv)
 static void		scrap_end(char **line, t_hive *hv)
 {
 	char		**tab;
-	static int	flag;
+	static int	flag_end = 0;
 
-	if (flag != 42)
+	if (flag_end != 42)
 	{
 		hv->buff = new_elem_b(*line, hv->buff);
-		flag = 42;
+		flag_end = 42;
 		free(*line);
 		get_next_line(0, line);
 		hv->buff = new_elem_b(*line, hv->buff);

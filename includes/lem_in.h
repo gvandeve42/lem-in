@@ -13,8 +13,6 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include <string.h>
-# include <errno.h>
 # include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"

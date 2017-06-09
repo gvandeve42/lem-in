@@ -50,10 +50,10 @@ int				is_startend(t_hive *hv)
 	tmp = hv->v_lst;
 	while (tmp != NULL)
 	{
-		if ((strcmp(tmp->n1, hv->start->name) == 0 &&
-			strcmp(tmp->n2, hv->end->name) == 0) ||
-			(strcmp(tmp->n2, hv->start->name) == 0 &&
-			strcmp(tmp->n1, hv->end->name) == 0))
+		if ((ft_strcmp(tmp->n1, hv->start->name) == 0 &&
+			ft_strcmp(tmp->n2, hv->end->name) == 0) ||
+			(ft_strcmp(tmp->n2, hv->start->name) == 0 &&
+			ft_strcmp(tmp->n1, hv->end->name) == 0))
 			return (1);
 		tmp = tmp->link;
 	}
