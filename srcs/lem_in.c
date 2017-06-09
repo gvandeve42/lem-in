@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 static void		scrap_info(char **line, t_hive *hv)
 {
