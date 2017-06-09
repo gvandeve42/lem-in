@@ -17,9 +17,17 @@ static void		push_frm(t_node *way, int len, int ant_nb, int ant_start)
 	if (ant_nb > 0)
 	{
 		if (way->prec == NULL)
+			{
+				way->ant++;
+				ft_printf("L%d-%s ", way->ant, way->name);
+				return ;
+			}
+		else if (way->prec->prec == NULL)
 		{
 			way->ant++;
 			ft_printf("L%d-%s ", way->ant, way->name);
+			if (way->ant > ant_start)
+				ft_printf("L%d-%s ", way->ant - 1, way->prec->name);
 			return ;
 		}
 		else if (way->prec->ant == 0 && way->ant == 0)
