@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/02 10:53:56 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/23 16:02:38 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/06/10 13:49:08 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,8 @@ static void		push_frm(t_node *way, int len, int ant_nb, int ant_start)
 {
 	if (ant_nb > 0)
 	{
-		if (way->prec == NULL)
-			{
-				way->ant++;
-				ft_printf("L%d-%s ", way->ant, way->name);
-				return ;
-			}
-		else if (way->prec->prec == NULL && way->ant != 0)
-		{
-			way->ant++;
-			ft_printf("L%d-%s ", way->ant, way->name);
-			if (way->ant > ant_start)
-				ft_printf("L%d-%s ", way->ant - 1, way->prec->name);
+		if (check_way_end(way, ant_start))
 			return ;
-		}
 		else if (way->prec->ant == 0 && way->ant == 0)
 		{
 			init_frm(way, len, ant_nb, ant_start);

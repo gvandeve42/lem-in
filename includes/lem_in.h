@@ -6,7 +6,7 @@
 /*   By: gvandeve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 12:12:18 by gvandeve          #+#    #+#             */
-/*   Updated: 2017/05/23 16:14:05 by gvandeve         ###   ########.fr       */
+/*   Updated: 2017/06/10 13:49:02 by gvandeve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ void		pp_frm(t_node *way, int len, int ant_nb, int ant_start);
 void		pr_frm(t_node *way, int len, int ant_nb, int ant_start);
 t_node		*add_start(t_hive *hv);
 t_node		*add_end(t_hive *hv);
+int			check_way_end(t_node *way, int ant_start);
 
 #endif
