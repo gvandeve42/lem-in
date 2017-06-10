@@ -22,7 +22,7 @@ static void		push_frm(t_node *way, int len, int ant_nb, int ant_start)
 				ft_printf("L%d-%s ", way->ant, way->name);
 				return ;
 			}
-		else if (way->prec->prec == NULL)
+		else if (way->prec->prec == NULL && way->ant != 0)
 		{
 			way->ant++;
 			ft_printf("L%d-%s ", way->ant, way->name);
